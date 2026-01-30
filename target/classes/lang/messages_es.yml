@@ -1,0 +1,61 @@
+# SoulGuard Mensajes en Español
+prefix: "&c[SoulGuard] &7"
+
+auth:
+  login-required: "&c&l[SoulGuard] &ePor favor, identifícate.\n&7Escribe: &f/login <contraseña>"
+  register-required: "&c&l[SoulGuard] &eRegistro de cuenta.\n&7Escribe: &f/register <contraseña> <contraseña>"
+  already-registered: "&c¡Ya estás registrado! Usa /login."
+  not-registered: "&c¡No estás registrado! Usa /register."
+  incorrect-password: "&c¡Contraseña incorrecta!"
+  passwords-dont-match: "&c¡Las contraseñas no coinciden!"
+  password-too-short: "&cLa contraseña es demasiado corta (Mín: {min} caracteres)"
+  too-many-registrations: "&c¡Demasiadas cuentas registradas desde esta IP!"
+  success-login: "&a¡Sesión iniciada correctamente!"
+  success-register: "&a¡Registrado correctamente!"
+  session-restored: "&aSesión restaurada. ¡Bienvenido de nuevo!"
+  please-auth: "&c¡Por favor identifícate primero!"
+  usage-login: "&7Uso: /login <contraseña>"
+  usage-register: "&7Uso: /register <contraseña> <confirmar_contraseña>"
+
+general:
+  no-permission: "&cNo tienes permiso."
+  reloaded: "&aConfiguración y módulos recargados."
+  unknown-command: "&cComando desconocido."
+
+staff:
+  pin-required: "&cALERTA DE SEGURIDAD: Introduce tu PIN con /pin <tu_pin>"
+  pin-set-success: "&a¡PIN establecido correctamente!"
+  pin-correct: "&a¡PIN correcto! Acceso concedido."
+  pin-incorrect: "&c¡PIN incorrecto! Intento {current}/{max}"
+  pin-already-set: "&c¡Ya tienes un PIN establecido!"
+  pin-usage: "&7Uso: /pin <número> O /pin set <número>"
+
+modules:
+  geoip-blocked: "&cTu país no está permitido en este servidor."
+  vpn-blocked: "&cSe ha detectado una VPN/Proxy. Por favor, desactívalo."
+  rate-limit: "&c¡Más despacio! Estás haciendo acciones demasiado rápido."
+  captcha-prompt: "&6Resuelve esto para entrar: &f{question}"
+  captcha-success: "&a¡Captcha resuelto!"
+  captcha-failed: "&cRespuesta incorrecta. Inténtalo de nuevo."
+  captcha:
+    mobile-form-notice: "&e&l[Captcha] &7Por favor, completa el formulario en pantalla."
+    pattern-ready: "&a[Staff] &7Por favor, dibuja tu **Patrón Visual**."
+
+elite:
+  firewall-blocked: "&c&l[SoulGuard] &7¡Firewall bloqueado! Completa el MFA (PIN/Discord) primero."
+  ghost-command: "&c&l[SoulGuard] &7Violación de seguridad: Acceso a comando no autorizado."
+  snapshot-taken: "&7[SoulGuard] Instantánea de inventario guardada por seguridad."
+  impossible-travel: "&cSe ha detectado un viaje imposible. Cuenta bloqueada por seguridad."
+  self-harm-alert: "&c&l[ALERTA] &7Se ha detectado lenguaje preocupante. Un moderador ha sido avisado."
+
+moderation:
+  banned-kick: "&c&l[SoulGuard] &7Has sido BANEADO\n&7Razón: &f{reason}\n&7Expira: &f{time}"
+  muted-chat: "&c&l[SoulGuard] &7Estás SILENCIADO.\n&7Razón: &f{reason}\n&7Expira: &f{time}"
+  warn-receive: "&c&l[SoulGuard] &eADVERTENCIA: &f{reason}"
+  kick-message: "&c&l[SoulGuard] &7Has sido expulsado.\n&7Razón: &f{reason}"
+  player-not-found: "&cJugador no encontrado."
+  punishment-success: "&aCastigo aplicado correctamente a {player}."
+  unpunish-success: "&aCastigo revocado para {player}."
+  no-history: "&7No hay historial de sanciones."
+  alts-found: "&6[SoulGuard] &7Cuentas asociadas a &f{player}&7:"
+  no-alts: "&7No se encontraron cuentas asociadas."

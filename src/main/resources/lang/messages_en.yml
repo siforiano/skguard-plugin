@@ -1,0 +1,42 @@
+# SoulGuard English Messages
+prefix: "&c[SoulGuard] &7"
+
+auth:
+  login-required: "&cPlease log in: /login <password>"
+  register-required: "&cPlease register: /register <password> <password>"
+  already-registered: "&cYou are already registered! Use /login."
+  not-registered: "&cYou are not registered! Use /register."
+  incorrect-password: "&cIncorrect password!"
+  passwords-dont-match: "&cPasswords do not match!"
+  password-too-short: "&cPassword is too short (Min: {min} characters)"
+  too-many-registrations: "&cToo many accounts registered from this IP!"
+  success-login: "&aLogged in successfully!"
+  success-register: "&aSuccessfully registered!"
+  session-restored: "&aSession restored. Welcome back!"
+  please-auth: "&cPlease authenticate first!"
+  usage-login: "&7Usage: /login <password>"
+  usage-register: "&7Usage: /register <password> <confirm_password>"
+
+general:
+  no-permission: "&cYou do not have permission."
+  reloaded: "&aConfiguration and modules reloaded."
+  unknown-command: "&cUnknown command."
+
+staff:
+  pin-required: "&cSECURITY ALERT: Enter your PIN with /pin <your_pin>"
+  pin-set-success: "&aPIN set successfully!"
+  pin-correct: "&aPIN Correct! Access granted."
+  pin-incorrect: "&cIncorrect PIN! Attempt {current}/{max}"
+  pin-already-set: "&cYou already have a PIN!"
+  pin-usage: "&7Usage: /pin <number> OR /pin set <number>"
+
+modules:
+  geoip-blocked: "&cYour country is not allowed on this server."
+  vpn-blocked: "&cVPN/Proxy detected. Please disable it."
+  rate-limit: "&cSlow down! You're acting too fast."
+  captcha-prompt: "&6Solve this to join: &f{question}"
+  captcha-success: "&aCaptcha solved!"
+  captcha-failed: "&cIncorrect answer. Try again."
+  captcha:
+    mobile-form-notice: "&e&l[Captcha] &7Please complete the on-screen form."
+    pattern-ready: "&a[Staff] &7Please draw your **Visual Pattern**."

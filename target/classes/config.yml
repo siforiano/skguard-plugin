@@ -1,0 +1,278 @@
+# ======================================================
+#           SoulGuard Ultimate - Configuración Profesional
+# ======================================================
+# Desarrollado por SoulGuard Team
+# Versión: 2.0.0-PRO
+
+general:
+  # Idioma del plugin (es, en)
+  language: "es"
+  # Edición del plugin (AUTO, LITE, PREMIUM)
+  edition: "AUTO"
+  # Modo depuración para ver errores detallados
+  debug: false
+  # Modo red (Sincronización vía MySQL/Redis)
+  network-mode: false
+  # Nombre del servidor principal/lobby
+  lobby-server: "lobby"
+  # Forzar autenticación en el lobby aunque exista sesión
+  force-lobby-mfa: true
+
+  # ENTERPRISE SECURITY: Master Key for data encryption (AES-256)
+  # IMPORTANT: Changing this will make previously encrypted data unreadable!
+  master-key: "SoulGuard_Enterprise_SuperSecret_2026!"
+
+  # Regex whitelist for commands allowed BEFORE authentication
+  allowed-commands-regex:
+    - "^/(login|reg|register|auth|l)\\s+.*$"
+    - "^/pin\\s+.*$"
+    - "^/2fa\\s+(setup|confirm|verify|backup)\\s*.*$"
+
+  # Ajustes de Privacidad y Logins
+  privacy:
+    log-logins: false
+    log-ips: false
+    hide-commands: true
+
+  # SoulGuard Premium+ Suite (Alta Seguridad)
+  premium-plus:
+    fast-login:
+      enabled: true
+      auto-bypass-mojang: true
+    bedrock-shield:
+      enabled: true
+      floodgate-protection: true
+    bypass-alerts:
+      enabled: true
+      notify-staff: true
+      log-to-file: true
+      strict-dominance: true
+
+database:
+  mysql:
+    enabled: false
+    host: "localhost"
+    port: 3306
+    database: "soulguard"
+    username: "root"
+    password: ""
+  redis:
+    enabled: false
+    sync-profiles: true
+    sync-chat: false
+
+# ======================================================
+#           Módulos de Seguridad de SoulGuard
+# ======================================================
+
+modules:
+  
+  # Bloqueador de comandos peligrosos
+  CommandBlocker:
+    enabled: true
+    block-plugin-syntax: true
+    blocked-commands: ["pl", "plugins", "ver", "op", "stop", "about"]
+    
+  # Seguridad avanzada para el Staff
+  StaffSecurity:
+    enabled: true
+    ip-whitelist: true
+    # PIN visual mediante GUI (Ideal para Bedrock/Móvil)
+    pattern-pin: true
+    lock-on-join: true
+    # Configuración de comandos de PIN
+    commands:
+      changepin:
+        permission: "soulguard.changepin"
+        cooldown: 300 # Segundos
+      
+  # Módulo de Autenticación Principal
+  AuthModule:
+    enabled: true
+    
+  # Detección de VPN y Proxies (Enterprise Engine)
+  VPNDetector:
+    enabled: true
+    proxycheck-key: ""
+    iphub-key: ""
+    block-hosting: true
+    block-vpn: true
+    block-proxy: true
+    risk-threshold: 66
+    # ASNs de Datacenters conocidos (Ejemplos: 16509=Amazon, 24940=Hetzner)
+    blocked-asns:
+      - "16509"
+      - "24940"
+      - "14061"
+      - "16276"
+
+  # Protección de Fuente de Proxy (Evita bypass de Bungee/Velocity)
+  ProxySourceGuard:
+    enabled: true
+    trusted-proxies: [] # Añade la IP de tu BungeeCord aquí
+    session-minutes: 30
+    limit-per-ip: 3
+    password:
+      min-length: 6
+      # Algoritmo de hash (Argon2 para máxima seguridad)
+      argon2-hashing: true
+    commands:
+      changepassword:
+        permission: "soulguard.changepassword"
+        cooldown: 300
+
+  # ======================================================
+  #           Protección Anti-Cheat (SoulGuard)
+  # ======================================================
+  
+  anticheat:
+    enabled: true
+    # Intensidad del Anti-Cheat (1-10)
+    # 1-3: Pasivo (Solo alertas, muy permisivo)
+    # 4-7: Balanceado (Recomendado para la mayoría de servidores)
+    # 8-10: Agresivo (Detección estricta, posible falsos positivos en lag)
+    intensity: 5
+    
+    # Ajustes específicos para Bedrock (Geyser)
+    bedrock-offsets:
+      reach: 0.5
+      velocity: 0.1
+      
+    checks:
+      combat:
+        Reach:
+          enabled: true
+          max-distance: 3.0
+          bedrock-distance: 3.5
+        Killaura:
+          enabled: true
+          ai-analysis: true
+        AutoClicker:
+          enabled: true
+          micro-interval: true
+      movement:
+        Flight:
+          enabled: true
+          prediction: true
+        Speed:
+          enabled: true
+        Scaffold:
+          enabled: true
+        Velocity:
+          enabled: true
+      
+      # Violation scoring system (Context-aware)
+      scoring:
+        # Increase thresholds by X% when server is lagging (TPS < 18)
+        lag-compensation: 0.50 
+        threshold-kick: 50
+        threshold-ban: 100
+
+  # ======================================================
+  #           Detección de Items Ilegales
+  # ======================================================
+  
+  illegal-items:
+    enabled: true
+    # Acción a tomar: NOTIFY, REMOVE, KICK, BAN
+    action: "REMOVE"
+    # Alertar a los administradores
+    alerts: true
+    
+    # Niveles máximos permitidos para cada encantamiento
+    enchantments:
+      # Armadura
+      PROTECTION: 4
+      FIRE_PROTECTION: 4
+      FEATHER_FALLING: 4
+      BLAST_PROTECTION: 4
+      PROJECTILE_PROTECTION: 4
+      RESPIRATION: 3
+      AQUA_AFFINITY: 1
+      THORNS: 3
+      DEPTH_STRIDER: 3
+      FROST_WALKER: 2
+      BINDING_CURSE: 1
+      # Espadas / Herramientas
+      SHARPNESS: 5
+      SMITE: 5
+      BANE_OF_ARTHROPODS: 5
+      KNOCKBACK: 2
+      FIRE_ASPECT: 2
+      LOOTING: 3
+      SWEEPING: 3
+      EFFICIENCY: 5
+      SILK_TOUCH: 1
+      UNBREAKING: 3
+      FORTUNE: 3
+      MENDING: 1
+      VANISHING_CURSE: 1
+      # Arcos / Ballestas
+      POWER: 5
+      PUNCH: 2
+      FLAME: 1
+      INFINITY: 1
+      MULTISHOT: 1
+      QUICK_CHARGE: 3
+      PIERCING: 4
+      # Mar / Otros
+      LUCK_OF_THE_SEA: 3
+      LURE: 3
+      LOYALTY: 3
+      IMPALING: 5
+      RIPTIDE: 3
+      CHANNELING: 1
+
+  # ======================================================
+  #           Funciones Premium SoulGuard
+  # ======================================================
+  
+  AI_BotFirewall:
+    enabled: true
+    mitigation-level: 3
+    human-verification: true
+
+  HWID_Manager:
+    enabled: true
+    prevent-evasion: true
+
+  Forensics_3D:
+    enabled: true
+    record-seconds: 60
+    hologram-replay: true
+
+# ======================================================
+#           Sistema de Mensajes Localizados
+# ======================================================
+
+messages:
+  prefix: "&8&l[&6&lSoulGuard&8&l] &r"
+  no-permission: "&cNo tienes permiso para realizar esta acción."
+  only-players: "&cEste comando solo puede ser ejecutado por jugadores."
+  
+  auth:
+    login-required: "&7Por favor, inicia sesión con &e/login <contraseña>"
+    register-required: "&7Por favor, regístrate con &e/register <contraseña> <confirmar>"
+    success-login: "&a¡Autenticación completada con éxito! Bienvenido a SoulGuard."
+    success-register: "&aTe has registrado correctamente. Guarda tu contraseña de forma segura."
+    incorrect-password: "&cContraseña incorrecta. Inténtalo de nuevo."
+    password-too-short: "&cLa contraseña es demasiado corta. Mínimo {min} caracteres."
+    already-registered: "&cYa estás registrado en el sistema."
+    not-registered: "&cNo estás registrado. Usa /register para crear una cuenta."
+    change-password-success: "&a¡Contraseña cambiada correctamente en SoulGuard!"
+    cooldown: "&cPor favor, espera {time} segundos antes de volver a usar este comando."
+    
+  staff:
+    pin-required: "&7Acceso restringido. Por favor, introduce tu &6PIN de SoulGuard&7."
+    pin-correct: "&a¡PIN verificado! Acceso concedido."
+    pin-incorrect: "&cPIN incorrecto. Intento {current}/{max}."
+    pin-set-success: "&aTu PIN de SoulGuard ha sido configurado correctamente."
+    change-pin-success: "&a¡PIN actualizado correctamente!"
+    
+  anticheat:
+    alert: "&c&lSoulGuard &8| &f{player} &7ha fallado la prueba de &e{check} &8(&fx{vl}&8)"
+    kick: "&c&lSoulGuard\n&7Violación de seguridad detectada: {check}"
+    
+  illegal-items:
+    detected: "&c&lSoulGuard &8| &7Item ilegal detectado en &f{player}&7. Acción: &e{action}"
+    notify-player: "&cSe ha detectado un item con encantamientos ilegales y ha sido procesado por SoulGuard."

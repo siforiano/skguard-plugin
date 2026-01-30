@@ -1,0 +1,47 @@
+name: SoulGuard
+version: ${project.version}
+main: com.soulguard.SoulGuard
+api-version: 1.20
+authors: [Hector]
+description: Advanced Security Plugin 1.20+
+website: www.soulcraft.com
+
+commands:
+  soulguard:
+    description: Main command for SoulGuard
+    usage: /soulguard <reload|help|audit|maintenance>
+    aliases: [sg]
+  pin:
+    description: Enter or set your staff PIN
+    usage: /pin <number> OR /pin set <number>
+  report:
+    description: Report a player for suspicious activity
+    usage: /report <player> <reason>
+  login:
+    description: Log in to your account
+    usage: /login <password>
+    aliases: [l]
+  register:
+    description: Create a new account
+    usage: /register <password> <confirm_password>
+    aliases: [reg]
+  2fa:
+    description: Setup or verify your 2FA token
+    usage: /2fa <setup|confirm|verify> <code>
+
+permissions:
+  soulguard.admin:
+    description: Allows full access to SoulGuard
+    default: op
+  soulguard.staff:
+    description: Basic staff permission for PIN system
+    default: false
+  soulguard.bypass.exploit:
+    description: Bypass illegal item checks
+    default: false
+  soulguard.bypass.movement:
+    description: Bypass movement verification
+    default: false
+  soulguard.bypass.afk:
+    description: Bypass AFK kick
+    default: false
