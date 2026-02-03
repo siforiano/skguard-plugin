@@ -1,0 +1,122 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#             🛡️ SKGuard | ANTI-CHEAT SYSTEM
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Comprehensive movement and combat verification.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+modules:
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Anti-Cheat Core
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  anticheat:
+    enabled: true
+    # Detection Intensity (1-10)
+    # [Range: 1-10 | Default: 5]
+    intensity: 5
+    
+    # Bedrock (Geyser) specific offsets for reachable distance and velocity.
+    bedrock-offsets:
+      reach: 0.5
+      velocity: 0.1
+      
+    checks:
+      combat:
+        Reach:
+          enabled: true
+          max-distance: 3.0
+          bedrock-distance: 3.5
+          violations-to-kick: 10
+        Killaura:
+          enabled: true
+          ai-analysis: true
+          check-rotation: true
+          violations-to-kick: 8
+        AutoClicker:
+          enabled: true
+          micro-interval: true
+          max-cps: 20
+          violations-to-kick: 15
+        Criticals:
+          enabled: true
+          strict-mode: false
+          violations-to-kick: 10
+        Velocity:
+          enabled: true
+          horizontal-check: true
+          vertical-check: true
+          violations-to-kick: 12
+          
+      movement:
+        Flight:
+          enabled: true
+          prediction: true
+          violations-to-kick: 5
+        Speed:
+          enabled: true
+          max-speed-multiplier: 1.3
+          violations-to-kick: 8
+        Scaffold:
+          enabled: true
+          rotation-check: true
+          violations-to-kick: 10
+        NoFall:
+          enabled: true
+          strict-mode: false
+          violations-to-kick: 15
+        Jesus:
+          enabled: true
+          violations-to-kick: 8
+        Spider:
+          enabled: true
+          violations-to-kick: 10
+          
+      player:
+        Regen:
+          enabled: true
+          max-heal-per-second: 2.0
+          violations-to-kick: 5
+        FastEat:
+          enabled: true
+          min-eat-time-ticks: 30
+          violations-to-kick: 8
+        AutoArmor:
+          enabled: true
+          max-equip-speed-ms: 100
+          violations-to-kick: 10
+
+      # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      # Scoring System: Context-Aware Violations
+      # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      scoring:
+        # Increment thresholds by X% when the server is lagging (TPS < 18).
+        # [0.50 = 50% increase in tolerance]
+        lag-compensation: 0.50 
+        threshold-kick: 50
+        threshold-ban: 100
+        # Points reduced per minute without violations.
+        decay-rate: 1
+
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    # Staff Visuals: Dynamic Alert Customization
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    visuals:
+      # Types: CHAT, ACTIONBAR, BOSSBAR, TITLE
+      alert-type: "ACTIONBAR"
+      # Format for the alert message (supports color codes).
+      # Placeholder: {player}, {check}, {vl}, {ping}
+      format: "&8[&b&lSG&8] &f{player} failed &b{check} &7(VL: {vl})"
+      # BossBar color: BLUE, GREEN, PINK, RED, WHITE, YELLOW
+      bossbar-color: "RED"
+      # Title duration (if alert-type is TITLE)
+      title-fade-in: 5
+      title-stay: 20
+      title-fade-out: 5
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Movement Verification: Low-Level Engine Checks
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MovementVerification:
+    enabled: true
+    strict-mode: false
+    check-interval-ticks: 5
+

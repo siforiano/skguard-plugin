@@ -1,16 +1,16 @@
-name: SoulGuard
+name: SKGuard
 version: ${project.version}
-main: com.soulguard.SoulGuard
+main: com.skguard.SKGuard
 api-version: 1.20
 authors: [Hector]
 description: Advanced Security Plugin 1.20+
 website: www.soulcraft.com
 
 commands:
-  soulguard:
-    description: Main command for SoulGuard
-    usage: /soulguard <reload|help|audit|maintenance>
-    aliases: [sg]
+  skguard:
+    description: Main command for SKGuard
+    usage: /skguard <reload|help|audit|maintenance>
+    aliases: [skg]
   pin:
     description: Enter or set your staff PIN
     usage: /pin <number> OR /pin set <number>
@@ -30,18 +30,19 @@ commands:
     usage: /2fa <setup|confirm|verify> <code>
 
 permissions:
-  soulguard.admin:
-    description: Allows full access to SoulGuard
+  skguard.admin:
+    description: Allows full access to SKGuard
     default: op
-  soulguard.staff:
+  skguard.staff:
     description: Basic staff permission for PIN system
     default: false
-  soulguard.bypass.exploit:
+  skguard.bypass.exploit:
     description: Bypass illegal item checks
     default: false
-  soulguard.bypass.movement:
+  skguard.bypass.movement:
     description: Bypass movement verification
     default: false
-  soulguard.bypass.afk:
+  skguard.bypass.afk:
     description: Bypass AFK kick
     default: false
+

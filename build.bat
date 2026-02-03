@@ -1,9 +1,9 @@
 @echo off
-REM Build script for SoulGuard - Windows
+REM Build script for SKGuard - Windows
 REM Generates both Lite and Premium versions
 
 echo ========================================
-echo   SoulGuard Build System
+echo   SKGuard Build System
 echo ========================================
 echo.
 
@@ -28,19 +28,19 @@ goto menu
 
 :lite
 echo.
-echo Building SoulGuard Lite...
+echo Building SKGuard Lite...
 call mvn clean package -P lite
 echo.
-echo Lite build complete! Check target/SoulGuard-Lite-1.0-SNAPSHOT.jar
+echo Lite build complete! Check target/SKGuard-Lite-1.0-SNAPSHOT.jar
 pause
 goto menu
 
 :premium
 echo.
-echo Building SoulGuard Premium...
+echo Building SKGuard Premium...
 call mvn clean package -P premium
 echo.
-echo Premium build complete! Check target/SoulGuard-Premium-1.0-SNAPSHOT.jar
+echo Premium build complete! Check target/SKGuard-Premium-1.0-SNAPSHOT.jar
 pause
 goto menu
 
@@ -55,8 +55,8 @@ echo [2/2] Building Premium...
 call mvn clean package -P premium
 echo.
 echo Both builds complete!
-echo - Lite: target/SoulGuard-Lite-1.0-SNAPSHOT.jar
-echo - Premium: target/SoulGuard-Premium-1.0-SNAPSHOT.jar
+echo - Lite: target/SKGuard-Lite-1.0-SNAPSHOT.jar
+echo - Premium: target/SKGuard-Premium-1.0-SNAPSHOT.jar
 pause
 goto menu
 

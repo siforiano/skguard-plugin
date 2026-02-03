@@ -1,4 +1,4 @@
-# SoulGuard - Build System Guide
+# SKGuard - Build System Guide
 
 ## Quick Start
 
@@ -20,7 +20,7 @@ chmod +x build.sh
 ## Build Options
 
 ### 1. Build Lite (FREE version)
-Generates `SoulGuard-Lite-1.0-SNAPSHOT.jar` with all current features.
+Generates `SKGuard-Lite-1.0-SNAPSHOT.jar` with all current features.
 
 **Command:**
 ```bash
@@ -38,7 +38,7 @@ mvn clean package -P lite
 - Premium-only modules (Web Panel, ML, etc.)
 
 ### 2. Build Premium (PAID version)
-Generates `SoulGuard-Premium-1.0-SNAPSHOT.jar` with all features including premium modules.
+Generates `SKGuard-Premium-1.0-SNAPSHOT.jar` with all features including premium modules.
 
 **Command:**
 ```bash
@@ -74,8 +74,8 @@ After building, find your JARs in the `target/` directory:
 
 ```
 target/
-├── SoulGuard-Lite-1.0-SNAPSHOT.jar      (FREE version)
-└── SoulGuard-Premium-1.0-SNAPSHOT.jar   (PREMIUM version)
+├── SKGuard-Lite-1.0-SNAPSHOT.jar      (FREE version)
+└── SKGuard-Premium-1.0-SNAPSHOT.jar   (PREMIUM version)
 ```
 
 ## How It Works
@@ -84,7 +84,7 @@ target/
 
 The `pom.xml` contains two profiles:
 
-1. **lite** - Excludes `src/main/java/com/soulguard/modules/premium/**`
+1. **lite** - Excludes `src/main/java/com/skguard/modules/premium/**`
 2. **premium** - Includes everything (default)
 
 ### Runtime Detection
@@ -92,7 +92,7 @@ The `pom.xml` contains two profiles:
 The plugin automatically detects which version is running:
 
 ```java
-Edition edition = SoulGuard.getInstance().getEdition();
+Edition edition = SKGuard.getInstance().getEdition();
 if (edition.isPremium()) {
     // Premium-only code
 }
@@ -104,7 +104,7 @@ Detection works by trying to load a premium-only class. If it fails, the plugin 
 
 ### Adding a New Premium Feature
 
-1. Create your module in `src/main/java/com/soulguard/modules/premium/`
+1. Create your module in `src/main/java/com/skguard/modules/premium/`
 2. Build both versions to test
 3. Lite will automatically exclude it
 4. Premium will include it
@@ -116,13 +116,13 @@ Detection works by trying to load a premium-only class. If it fails, the plugin 
 mvn clean package -P lite
 
 # Test on server
-# Copy target/SoulGuard-Lite-1.0-SNAPSHOT.jar to server
+# Copy target/SKGuard-Lite-1.0-SNAPSHOT.jar to server
 
 # Build Premium
 mvn clean package -P premium
 
 # Test on server
-# Copy target/SoulGuard-Premium-1.0-SNAPSHOT.jar to server
+# Copy target/SKGuard-Premium-1.0-SNAPSHOT.jar to server
 ```
 
 ## Troubleshooting
@@ -139,7 +139,7 @@ mvn package -P lite
 
 Check that premium modules are in the correct folder:
 ```
-src/main/java/com/soulguard/modules/premium/
+src/main/java/com/skguard/modules/premium/
 ```
 
 ### Missing Dependencies
@@ -154,7 +154,7 @@ mvn dependency:resolve
 ### GitHub Actions Example
 
 ```yaml
-name: Build SoulGuard
+name: Build SKGuard
 
 on: [push]
 
@@ -176,7 +176,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: SoulGuard-Builds
+          name: SKGuard-Builds
           path: target/*.jar
 ```
 

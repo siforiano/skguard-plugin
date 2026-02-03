@@ -1,1 +1,1 @@
-{"id":"soulguard","name":"SoulGuard","version":"1.0-SNAPSHOT","description":"Advanced Security for Minecraft Networks","authors":["SoulGuardTeam"],"dependencies":[],"main":"com.soulguard.SoulGuardVelocity"}
+{"id":"skguard","name":"SKGuard","version":"1.0-SNAPSHOT","description":"Advanced Security for Minecraft Networks","authors":["SKGuardTeam"],"dependencies":[],"main":"com.skguard.SKGuardVelocity"}

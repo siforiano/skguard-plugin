@@ -1,5 +1,5 @@
-# SoulGuard English Messages
-prefix: "&c[SoulGuard] &7"
+# SKGuard English Messages
+prefix: "&c[SKGuard] &7"
 
 auth:
   login-required: "&cPlease log in: /login <password>"
@@ -40,3 +40,4 @@ modules:
   captcha:
     mobile-form-notice: "&e&l[Captcha] &7Please complete the on-screen form."
     pattern-ready: "&a[Staff] &7Please draw your **Visual Pattern**."
+

@@ -1,9 +1,9 @@
-# SoulGuard Mensajes en Español
-prefix: "&c[SoulGuard] &7"
+# SKGuard Mensajes en Español
+prefix: "&c[SKGuard] &7"
 
 auth:
-  login-required: "&c&l[SoulGuard] &ePor favor, identifícate.\n&7Escribe: &f/login <contraseña>"
-  register-required: "&c&l[SoulGuard] &eRegistro de cuenta.\n&7Escribe: &f/register <contraseña> <contraseña>"
+  login-required: "&c&l[SKGuard] &ePor favor, identifícate.\n&7Escribe: &f/login <contraseña>"
+  register-required: "&c&l[SKGuard] &eRegistro de cuenta.\n&7Escribe: &f/register <contraseña> <contraseña>"
   already-registered: "&c¡Ya estás registrado! Usa /login."
   not-registered: "&c¡No estás registrado! Usa /register."
   incorrect-password: "&c¡Contraseña incorrecta!"
@@ -42,20 +42,21 @@ modules:
     pattern-ready: "&a[Staff] &7Por favor, dibuja tu **Patrón Visual**."
 
 elite:
-  firewall-blocked: "&c&l[SoulGuard] &7¡Firewall bloqueado! Completa el MFA (PIN/Discord) primero."
-  ghost-command: "&c&l[SoulGuard] &7Violación de seguridad: Acceso a comando no autorizado."
-  snapshot-taken: "&7[SoulGuard] Instantánea de inventario guardada por seguridad."
+  firewall-blocked: "&c&l[SKGuard] &7¡Firewall bloqueado! Completa el MFA (PIN/Discord) primero."
+  ghost-command: "&c&l[SKGuard] &7Violación de seguridad: Acceso a comando no autorizado."
+  snapshot-taken: "&7[SKGuard] Instantánea de inventario guardada por seguridad."
   impossible-travel: "&cSe ha detectado un viaje imposible. Cuenta bloqueada por seguridad."
   self-harm-alert: "&c&l[ALERTA] &7Se ha detectado lenguaje preocupante. Un moderador ha sido avisado."
 
 moderation:
-  banned-kick: "&c&l[SoulGuard] &7Has sido BANEADO\n&7Razón: &f{reason}\n&7Expira: &f{time}"
-  muted-chat: "&c&l[SoulGuard] &7Estás SILENCIADO.\n&7Razón: &f{reason}\n&7Expira: &f{time}"
-  warn-receive: "&c&l[SoulGuard] &eADVERTENCIA: &f{reason}"
-  kick-message: "&c&l[SoulGuard] &7Has sido expulsado.\n&7Razón: &f{reason}"
+  banned-kick: "&c&l[SKGuard] &7Has sido BANEADO\n&7Razón: &f{reason}\n&7Expira: &f{time}"
+  muted-chat: "&c&l[SKGuard] &7Estás SILENCIADO.\n&7Razón: &f{reason}\n&7Expira: &f{time}"
+  warn-receive: "&c&l[SKGuard] &eADVERTENCIA: &f{reason}"
+  kick-message: "&c&l[SKGuard] &7Has sido expulsado.\n&7Razón: &f{reason}"
   player-not-found: "&cJugador no encontrado."
   punishment-success: "&aCastigo aplicado correctamente a {player}."
   unpunish-success: "&aCastigo revocado para {player}."
   no-history: "&7No hay historial de sanciones."
-  alts-found: "&6[SoulGuard] &7Cuentas asociadas a &f{player}&7:"
+  alts-found: "&6[SKGuard] &7Cuentas asociadas a &f{player}&7:"
   no-alts: "&7No se encontraron cuentas asociadas."
+

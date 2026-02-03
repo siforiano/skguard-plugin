@@ -1,0 +1,32 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#             💬 SKGuard | MESSAGES & TRANSLATIONS
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Customize how SKGuard speaks to your players and staff.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+messages:
+  # The global prefix for all plugin messages.
+  prefix: "&8[&bSKGuard&8] &r"
+
+  # Error message when a player lacks required permissions.
+  no-permission: "&cYou do not have permission to execute this command."
+
+  # Generic alert for security mitigations.
+  security-alert: "&c&lSECURITY ALERT: &7A potential threat was detected and mitigated."
+
+  # Specific message for IP Drift kick.
+  ip-drift-kick: "&c[SKGuard] IP Drift Detected. Session terminated for safety."
+
+  # Authentication messages
+  auth:
+    need-login: "&ePlease use &f/login <password> &eto play!"
+    need-register: "&eWelcome! Use &f/register <password> <password> &eto start."
+    login-success: "&aSuccessfully authenticated. Welcome back!"
+    wrong-password: "&cIncorrect password! Attempts remaining: &f{0}"
+    too-many-attempts: "&cToo many failed attempts. Your IP has been temporarily blocked."
+
+  # Staff notifications
+  staff:
+    alert-format: "&8[&4&lALERT&8] &f{0} &7» &c{1}"
+    dashboard-header: "&b&lSKGuard &fSession Active &8| &eIP: {0}"
+

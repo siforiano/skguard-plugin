@@ -1,0 +1,133 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#             ⚙️ SKGuard | ADVANCED INTERNAL SETTINGS
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Technical tweaks and specialized premium modules.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+advanced:
+  performance:
+    async-logs: true
+    flush-interval: 30
+    nbt-cache: true
+
+  technical:
+    force-legacy-reflection: false
+    strict-packet-verification: true
+
+  threading:
+    scanner-threads: 2
+    task-priority: "NORMAL"
+
+modules:
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Forensics: 3D Replay & Evidence
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Forensics_3D:
+    enabled: true
+    record-seconds: 60
+    auto-record-on-violation: true
+
+  ForensicsReplayModule:
+    enabled: true
+    playback-speed: 1.0
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # WebPanel: Professional External Management
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  WebPanelModule:
+    enabled: true
+    api-port: 8080
+    enable-ssl: false
+    admin-token: "SG_ADMIN_CHANGE_ME"
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # ML & AI Security: Predictive Threat Analysis
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MLDetectionModule:
+    enabled: true
+    # Use heuristic machine learning to detect unknown cheats.
+    heuristic-analysis: true
+    training-mode: false
+
+  PredictiveBanIA:
+    enabled: true
+    # Threshold for AI-driven automatic bans.
+    confidence-threshold: 95
+    notify-admin-on-ai-decision: true
+
+  ThreatAnalyzer:
+    enabled: true
+    # Predict upcoming server threats (e.g., D-DoS patterns).
+    check-internal-traffic: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Forensics & Stealth Monitoring
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ShadowMirrorInstance:
+    enabled: true
+    # Create invisible shadow actors of suspicious players.
+    enable-shadow-recording: true
+
+  TraceEngine:
+    enabled: true
+    # Low-level tracking of all critical server events.
+    log-all-events: false
+
+  WeeklyReportModule:
+    enabled: true
+    # Send a PDF-ready summary of security blocks to admins.
+    gen-pdf-report: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Specialized Internal Tuning
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PacketObfuscator:
+    enabled: true
+    # Scramble plugin names in packets to prevent sniffing.
+    hide-true-names: true
+    obfuscate-entity-ids: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # External Integrations (Notificators)
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  CloudBlacklistModule:
+    enabled: true
+    sync-interval-minutes: 30
+    api-key: ""
+
+  GlobalTrustModule:
+    enabled: true
+    share-bans: false
+    share-reputation: true
+    trust-threshold: 50
+
+  DiscordLinkModule:
+    enabled: false
+    bot-token: ""
+    guild-id: ""
+    require-link: false
+    role-sync: false
+
+  DiscordBotModule:
+    enabled: false
+    webhook-url: ""
+    notify-bans: true
+
+  EmailNotificationModule:
+    enabled: false
+    smtp-host: "smtp.gmail.com"
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Specialized Monitoring
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HealthAnalyzer:
+    enabled: true
+    check-interval-seconds: 60
+
+  InventorySnapshotModule:
+    enabled: true
+
+  BiometryModule:
+    enabled: false
+    sensitivity: 75
+

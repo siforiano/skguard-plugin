@@ -1,0 +1,362 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#             ⚔️ SKGuard | PROTECTION & DEFENSE
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Manage your server's defensive modules and anti-bot systems.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+modules:
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # AntiExploit: Proactive Exploit Mitigation
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AntiExploit:
+    enabled: true
+    scan-on-join: true
+    scan-on-inventory-open: true
+    block-crash-items: true
+    block-oversized-packets: true
+    block-invalid-data: true
+    max-packet-size: 2097152
+    
+    # Packets Per Second (PPS) Limiter
+    # [Prevents intentional server lag/crashes]
+    packet-rate-limits:
+      enabled: true
+      max-pps: 500
+      max-pps-kick: 750
+      # Action: KICK, BAN, NOTIFY
+      action: "KICK"
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Connection & Infrastructure
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  VPNDetector:
+    enabled: true
+    risk-threshold: 66
+    kick-on-vpn: true
+    proxycheck-key: ""
+    iphub-key: ""
+    vpnapi-key: ""
+    block-hosting: true
+    block-vpn: true
+    block-proxy: true
+    # ASNs of known Datacenters (16509=Amazon, 24940=Hetzner, 14061=DigitalOcean, 16276=OVH)
+    blocked-asns:
+      - "16509"
+      - "24940"
+      - "14061"
+      - "16276"
+    strict-dominance: true
+
+  ProxySourceGuard:
+    enabled: true
+    # List of trusted IP addresses (your BungeeCord/Velocity IPs).
+    trusted-proxies: []
+    verify-forwarding: true
+
+  ConnectionManager:
+    enabled: true
+    max-connections-per-ip: 3
+    connection-timeout-seconds: 10
+    rate-limit-enabled: true
+    connections-per-second: 2
+
+  WhitelistManager:
+    enabled: false
+    # Modes: STRICT, NORMAL, DISABLED.
+    mode: "STRICT"
+    kick-message: "&cYou are not whitelisted on this server."
+
+  GeoIPModule:
+    enabled: false
+    # ISO Country codes allowed/blocked (e.g., ["CN", "RU", "KP"]).
+    blocked-countries: []
+    cache-size: 1000
+
+  TravelGuard:
+    enabled: true
+    # Threshold for speed distance between two logins (impossible travel).
+    max-distance-km: 500
+    time-window-hours: 1
+    action: "KICK"
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # AI & Bot Protection
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AI_BotFirewall:
+    enabled: true
+    mitigation-level: 3
+    human-verification: true
+    captcha-on-suspicious: true
+
+  GhostGuard:
+    enabled: true
+    check-join-pattern: true
+    max-joins-per-minute: 5
+    auto-blacklist: true
+
+  BehaviorMonitor:
+    enabled: true
+    track-movement: true
+    track-chat: true
+    ai-analysis: true
+    anomaly-threshold: 75
+
+  HoneypotModule:
+    enabled: true
+    fake-commands: true
+    invisible-blocks: true
+    auto-ban: true
+
+  NameValidator:
+    enabled: true
+    block-special-chars: true
+    min-length: 3
+    max-length: 16
+    blocked-patterns:
+      - "(?i).*bot.*"
+      - "(?i).*hack.*"
+      - "(?i).*admin.*"
+
+  CaptchaModule:
+    enabled: true
+    on-first-join: false
+    on-suspicious-activity: true
+    # difficulty: EASY, MEDIUM, HARD
+    difficulty: "MEDIUM"
+    # style: MAP (Uses a map item), CHAT (Uses text colors), MENU (GUI items)
+    style: "MAP"
+    timeout-seconds: 60
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Internal Security & Utils
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  IllegalItemsModule:
+    enabled: true
+    action: "REMOVE"
+    alerts: true
+    check-on-join: true
+    check-on-pickup: true
+    check-on-craft: true
+    
+    # Maximum levels allowed for each enchantment.
+    enchantments:
+      # Armor
+      PROTECTION: 4
+      FIRE_PROTECTION: 4
+      FEATHER_FALLING: 4
+      BLAST_PROTECTION: 4
+      PROJECTILE_PROTECTION: 4
+      RESPIRATION: 3
+      AQUA_AFFINITY: 1
+      THORNS: 3
+      DEPTH_STRIDER: 3
+      FROST_WALKER: 2
+      BINDING_CURSE: 1
+      # Swords / Tools
+      SHARPNESS: 5
+      SMITE: 5
+      BANE_OF_ARTHROPODS: 5
+      KNOCKBACK: 2
+      FIRE_ASPECT: 2
+      LOOTING: 3
+      SWEEPING: 3
+      EFFICIENCY: 5
+      SILK_TOUCH: 1
+      UNBREAKING: 3
+      FORTUNE: 3
+      MENDING: 1
+      VANISHING_CURSE: 1
+      # Bows
+      POWER: 5
+      PUNCH: 2
+      FLAME: 1
+      INFINITY: 1
+      MULTISHOT: 1
+      QUICK_CHARGE: 3
+      PIERCING: 4
+      # Other
+      LUCK_OF_THE_SEA: 3
+      LURE: 3
+      LOYALTY: 3
+      IMPALING: 5
+      RIPTIDE: 3
+      CHANNELING: 1
+
+  PacketInspector:
+    enabled: true
+    log-suspicious: true
+    block-malformed: true
+    rate-limit-packets: true
+
+  AbsoluteSecurityInterceptor:
+    enabled: true
+    intercept-commands: true
+    intercept-chat: true
+    intercept-packets: true
+
+  PluginGuardModule:
+    enabled: true
+    hide-plugins: true
+    fake-plugin-list: false
+    blocked-commands: ["plugins", "pl", "bukkit:plugins", "bukkit:pl"]
+
+  GhostCommandModule:
+    enabled: true
+    hide-from-tab: true
+    custom-commands: []
+    blocked-commands: ["plugins", "pl", "bukkit:plugins", "bukkit:pl"]
+
+  ChatFilter:
+    enabled: true
+    anti-flood:
+      enabled: true
+      interval-seconds: 2
+    anti-repetition:
+      enabled: true
+    anti-caps:
+      enabled: true
+      percentage: 70
+      min-length: 5
+    link-filter:
+      enabled: true
+      whitelist: []
+    word-filter:
+      enabled: true
+      blocked-words: []
+      action: "BLOCK"
+
+  PrivacyGuard:
+    enabled: true
+    hide-ip-in-logs: true
+    hide-coordinates: false
+    anonymize-reports: false
+    hide-coordinates: false
+
+  ScamGuard:
+    enabled: true
+    detect-phishing: true
+    detect-fake-links: true
+    detect-impersonation: true
+
+  CommandBlocker:
+    enabled: true
+    block-plugin-syntax: true
+    blocked-commands: 
+      - "pl"
+      - "plugins"
+      - "ver"
+      - "version"
+      - "about"
+      - "?"
+      - "bukkit:pl"
+      - "bukkit:plugins"
+    custom-message: "&cThis command is blocked by SKGuard."
+
+  CommandGuard:
+    enabled: true
+    log-all-commands: false
+    log-staff-commands: true
+    block-console-commands: []
+
+  AntiAFK:
+    enabled: true
+    afk-time-minutes: 10
+    warning-time-minutes: 8
+    kick-message: "&cYou have been kicked for being AFK for too long."
+
+  RateLimiter:
+    enabled: true
+    commands-per-second: 5
+    actions-per-second: 10
+    punish-on-exceed: true
+
+  OpGuard:
+    enabled: true
+    prevent-op-command: true
+    prevent-deop: true
+    alert-on-attempt: true
+    whitelist: []
+
+  PanicModule:
+    enabled: true
+    trigger-command: "/panic"
+    actions: ["KICK_ALL", "DISABLE_JOINS", "ALERT_STAFF"]
+
+  MaintenanceModule:
+    enabled: false
+    kick-message: "&eServer is under maintenance.\n&7Be back soon!"
+
+  SystemMonitor:
+    enabled: true
+    check-tps: true
+    check-memory: true
+    alert-threshold-tps: 18.0
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # TradeGuard: Anti-Scam Trading Security
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  TradeGuard:
+    enabled: true
+    # Prevent trade-scams by adding a 3-second delay after changes.
+    anti-switch-scam: true
+    # Log all trades to the database for staff review.
+    log-trades: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Moderation & Social Engineering
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ModerationModule:
+    enabled: true
+    # Auto-moderate toxicity in real-time.
+    auto-moderate: true
+    # Threshold for automatic mutes.
+    toxicity-threshold: 85
+
+  ShadowBanModule:
+    enabled: true
+    # Players can join and chat, but NO ONE can see their messages.
+    silent-mode: true
+    # Prevent shadow-banned players from dropping items.
+    block-drops: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Command & Tab Infrastructure
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  CommandFirewallModule:
+    enabled: true
+    # Analyze commands for malicious payload/syntax.
+    deep-packet-analysis: true
+    # Block internal plugin commands (e.g., //calc).
+    block-unsafe-arguments: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Administration & Moderation Tools
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  RollbackManager:
+    enabled: true
+    track-blocks: true
+    track-inventory: true
+    max-history-hours: 24
+
+  PunishSystem:
+    enabled: true
+    ban-system: true
+    mute-system: true
+    kick-system: true
+    temp-bans: true
+
+  ReportSystem:
+    enabled: true
+    notify-staff: true
+    save-to-database: true
+    cooldown-seconds: 60
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # TicketSystem: Internal Player Support
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  TicketModule:
+    enabled: true
+    # Allow players to open security reports via /report.
+    allow-reports: true
+    notify-staff-on-open: true
+

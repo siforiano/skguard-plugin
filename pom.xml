@@ -4,18 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.soulguard</groupId>
-    <artifactId>SoulGuard</artifactId>
+    <groupId>com.skguard</groupId>
+    <artifactId>SKGuard</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>SoulGuard</name>
+    <name>SKGuard</name>
     <description>Advanced Security and Anti-Spam Plugin for Minecraft 1.20+</description>
 
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <soulguard.edition>Premium</soulguard.edition>
+        <SKGuard.edition>Premium</SKGuard.edition>
     </properties>
 
     <profiles>
@@ -23,17 +23,17 @@
         <profile>
             <id>lite</id>
             <properties>
-                <soulguard.edition>Lite</soulguard.edition>
+                <SKGuard.edition>Lite</SKGuard.edition>
             </properties>
             <build>
-                <finalName>SoulGuard-Lite-${project.version}</finalName>
+                <finalName>SKGuard-Lite-${project.version}</finalName>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
                         <configuration>
                             <excludes>
-                                <exclude>**/modules/premium/**</exclude>
+                                <exclude>com.skguard/modules/premium/**</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
@@ -48,10 +48,10 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <soulguard.edition>Premium</soulguard.edition>
+                <SKGuard.edition>Premium</SKGuard.edition>
             </properties>
             <build>
-                <finalName>SoulGuard-Premium-${project.version}</finalName>
+                <finalName>SKGuard-Premium-${project.version}</finalName>
             </build>
         </profile>
     </profiles>
@@ -92,7 +92,7 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.soulguard.SoulGuard</mainClass>
+                                    <mainClass>com.skguard.SKGuard</mainClass>
                                 </transformer>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
@@ -118,6 +118,18 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <includes>
+                    <include>SKGuard.properties</include>
+                    <include>plugin.yml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>SKGuard.properties</exclude>
+                    <exclude>plugin.yml</exclude>
+                </excludes>
             </resource>
         </resources>
     </build>
@@ -235,3 +247,4 @@
         </dependency>
     </dependencies>
 </project>
+

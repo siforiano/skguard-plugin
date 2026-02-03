@@ -1,9 +1,9 @@
 #!/bin/bash
-# Build script for SoulGuard - Linux/Mac
+# Build script for SKGuard - Linux/Mac
 # Generates both Lite and Premium versions
 
 echo "========================================"
-echo "  SoulGuard Build System"
+echo "  SKGuard Build System"
 echo "========================================"
 echo ""
 
@@ -29,20 +29,20 @@ show_menu() {
 
 build_lite() {
     echo ""
-    echo "Building SoulGuard Lite..."
+    echo "Building SKGuard Lite..."
     mvn clean package -P lite
     echo ""
-    echo "Lite build complete! Check target/SoulGuard-Lite-1.0-SNAPSHOT.jar"
+    echo "Lite build complete! Check target/SKGuard-Lite-1.0-SNAPSHOT.jar"
     read -p "Press Enter to continue..."
     show_menu
 }
 
 build_premium() {
     echo ""
-    echo "Building SoulGuard Premium..."
+    echo "Building SKGuard Premium..."
     mvn clean package -P premium
     echo ""
-    echo "Premium build complete! Check target/SoulGuard-Premium-1.0-SNAPSHOT.jar"
+    echo "Premium build complete! Check target/SKGuard-Premium-1.0-SNAPSHOT.jar"
     read -p "Press Enter to continue..."
     show_menu
 }
@@ -58,8 +58,8 @@ build_both() {
     mvn clean package -P premium
     echo ""
     echo "Both builds complete!"
-    echo "- Lite: target/SoulGuard-Lite-1.0-SNAPSHOT.jar"
-    echo "- Premium: target/SoulGuard-Premium-1.0-SNAPSHOT.jar"
+    echo "- Lite: target/SKGuard-Lite-1.0-SNAPSHOT.jar"
+    echo "- Premium: target/SKGuard-Premium-1.0-SNAPSHOT.jar"
     read -p "Press Enter to continue..."
     show_menu
 }
@@ -74,3 +74,4 @@ clean_build() {
 }
 
 show_menu
+

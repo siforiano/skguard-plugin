@@ -1,0 +1,180 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#             🛡️ SKGuard | AUTHENTICATION & ACCESS
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Configure everything related to identity, login, and registration.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+modules:
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # AuthModule: Primary Authentication System
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AuthModule:
+    # Enable/Disable the entire auth system.
+    # [Default: true]
+    enabled: true
+
+    # How many minutes a player stays logged in after disconnecting.
+    # Set to 0 to disable session persistence (forced login every join).
+    # [Range: 0-1440 | Default: 30]
+    session-minutes: 30
+
+    # Prevent massive bot registration by limiting accounts per IP address.
+    # [Range: 1-10 | Default: 2]
+    limit-per-ip: 2
+
+    password:
+      # Minimum length for new passwords.
+      # [Range: 4-32 | Default: 6]
+      min-length: 6
+
+      # Use Argon2 for hashing. Highly recommended for production.
+      # [Default: true]
+      argon2-hashing: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # StaffSecurity: Tier-2 Defense for Administrators
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  StaffSecurity:
+    enabled: true
+
+    # Only allow staff to join from specific IP addresses.
+    # [Default: true]
+    ip-whitelist: true
+
+    # Display a visual 9-button pattern PIN on GUI join.
+    # [Default: true]
+    pattern-pin: true
+
+    # Freeze movement and chat until the PIN is correctly entered.
+    # [Default: true]
+    lock-on-join: true
+    
+    # Real-time IP monitoring. Session terminates if IP shifts.
+    # [Default: true]
+    ip-drift-lock: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # TOTPManager: Google Authenticator / 2FA Support
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  TOTPManager:
+    enabled: true
+    # Force staff members to setup 2FA.
+    enforce-for-staff: true
+    # Number of one-time backup codes to generate.
+    backup-codes: 5
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # Fast-Login: Premium Account Experience
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  FastLogin:
+    # Automatically log in players with a legitimate Mojang account.
+    # [Default: true]
+    enabled: true
+    # Bypass name-checks for verified Mojang accounts.
+    auto-bypass-mojang: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # PremiumModule: Mojang Official Authentication
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PremiumModule:
+    enabled: true
+    # Automatically register premium players into the database.
+    auto-register: true
+    # If true, only players with a physical copy of the game can join.
+    force-premium-login: false
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # HWID_Manager: Hardware ID Verification
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HWID_Manager:
+    enabled: true
+    # If true, the session will be bound to the player's IP address.
+    # [Highly Recommended for security]
+    bind-to-ip: true
+    # If true, player must be using the same hardware ID as when authorized.
+    bind-to-hwid: false
+    # Maximum sessions allowed per IP address.
+    max-sessions-per-ip: 1
+    # Maximum accounts allowed from the same PC.
+    max-accounts-per-hwid: 3
+    # Action on limit reached: KICK, BAN, NOTIFY.
+    action: "KICK"
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # StaffRateLimiter: Preventing Admin Hijacking
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  StaffRateLimiter:
+    enabled: true
+    # Max administrative commands per minute.
+    max-commands-per-minute: 20
+    # Notification if a staff member exceeds the limit.
+    notify-owners: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # StaffAnalytics: Monitoring Administrative Activity
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  StaffAnalyticsModule:
+    enabled: true
+    track-session-time: true
+    track-efficiency: true
+    weekly-reports: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # QuarantineManager: Isolation of Suspicious Staff
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  QuarantineManager:
+    enabled: true
+    # If a staff member fails PIN/2FA, lock them in a vacuum world.
+    teleport-to-vacuum: true
+    vacuum-location: "world:0:100:0"
+    restrict-chat: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # AltLinker: Multi-Account Discovery
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AltLinker:
+    enabled: true
+    link-by-ip: true
+    link-by-hwid: true
+    max-alts: 5
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # IdentityGuard: Account Identity Protection
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  IdentityGuard:
+    enabled: true
+    # Alert if a player changes their name or UUID association.
+    check-name-changes: true
+    check-uuid-changes: true
+    alert-staff: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # BruteForceProtector: Login Security Engine
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BruteForceProtector:
+    enabled: true
+    # Maximum failed login attempts allowed.
+    max-attempts: 5
+    # Cooldown time after reaching max attempts (minutes).
+    lock-duration-minutes: 15
+    # Notification to staff on brute-force attempts.
+    alert-staff: true
+    # Custom action to execute on lockdown: KICK, BAN, or COMMAND.
+    punishment-action: "KICK"
+    # Command to run if punishment-action is "COMMAND" (use {player}).
+    custom-command: "msg {player} &cToo many failed attempts! Try again later."
+    # Notify a Discord webhook on brute-force detection.
+    notify-webhook: false
+    # Global lockdown if X IPs are trying to brute force.
+    global-threshold: 20
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # UserSecurityModule: Client-Side Verification
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  UserSecurityModule:
+    enabled: true
+    # Check if the player is using a blacklisted client/mod.
+    check-mods: true
+    # Verify the player is using a legitimate launcher.
+    verify-launcher: true
+

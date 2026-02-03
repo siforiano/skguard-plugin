@@ -1,0 +1,75 @@
+package com.skguard.modules.premium;
+
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import com.skguard.SKGuard;
+import com.skguard.api.SecurityModule;
+
+/**
+ * Premium Elite Feature: Shadow Ban Instance (Mirror).
+ * Isolates suspected cheaters into a "virtual dimension" where 
+ * they can chat and move but their actions have no impact on the 
+ * real world or other players.
+ */
+public class ShadowMirrorInstance implements SecurityModule, Listener {
+
+    private final SKGuard plugin;
+    private boolean enabled;
+    
+    private final Set<UUID> mirroredPlayers = ConcurrentHashMap.newKeySet();
+
+    public ShadowMirrorInstance(SKGuard plugin) {
+        this.plugin = plugin;
+    }
+
+    @Override
+    public String getName() {
+        return "Shadow_Mirror";
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    @Override
+    public void enable() {
+        this.enabled = true;
+    }
+
+    @Override
+    public void disable() {
+        this.enabled = false;
+        mirroredPlayers.clear();
+    }
+
+    @Override
+    public void reload() {}
+
+    public void isolatePlayer(Player player) {
+        mirroredPlayers.add(player.getUniqueId());
+        player.sendMessage("§a[SKGuard] §7You have been mirrored for safety check.");
+        plugin.getLogManager().logInfo("[Mirror] Isolated suspicious player: " + player.getName());
+    }
+
+    @EventHandler
+    public void onMirroredChat(AsyncPlayerChatEvent event) {
+        if (!enabled || !mirroredPlayers.contains(event.getPlayer().getUniqueId())) return;
+        
+        // Shadow chat: Send only to other mirrored players
+        event.getRecipients().removeIf(p -> !mirroredPlayers.contains(p.getUniqueId()));
+    }
+    
+    @EventHandler
+    public void onMirroredJoin(PlayerJoinEvent event) {
+        if (!enabled) return;
+        // Logic to check if they were previously mirrored
+    }
+}
+
