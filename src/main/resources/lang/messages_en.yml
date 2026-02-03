@@ -1,9 +1,14 @@
-# SKGuard English Messages
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#             👑 SKGuard | ENGLISH TRANSLATIONS
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Visual codes: & for colors, \n for new lines.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 prefix: "&c[SKGuard] &7"
 
 auth:
-  login-required: "&cPlease log in: /login <password>"
-  register-required: "&cPlease register: /register <password> <password>"
+  login-required: "&c&l[SKGuard] &eAuthentication required.\n&7Type: &f/login <password>"
+  register-required: "&c&l[SKGuard] &eAccount registration.\n&7Type: &f/register <password> <password>"
   already-registered: "&cYou are already registered! Use /login."
   not-registered: "&cYou are not registered! Use /register."
   incorrect-password: "&cIncorrect password!"
@@ -16,28 +21,80 @@ auth:
   please-auth: "&cPlease authenticate first!"
   usage-login: "&7Usage: /login <password>"
   usage-register: "&7Usage: /register <password> <confirm_password>"
+  identity-mismatch: "&c[SKGuard] Identity Mismatch Detected.\n&7Please use your original account."
 
 general:
-  no-permission: "&cYou do not have permission."
-  reloaded: "&aConfiguration and modules reloaded."
-  unknown-command: "&cUnknown command."
+  no-permission: "&cYou do not have permission to perform this action."
+  reloaded: "&aConfiguration and security modules reloaded."
+  unknown-command: "&cUnknown command. Type /skguard help for info."
+  maintenance-mode: "&cThe server is currently in maintenance mode."
+  panic-mode-active: "&4&l[PANIC] &cThe server is currently under lockdown."
+  help-header: "&c&l━━━━━━━ &fSKGuard Help &c&l━━━━━━━"
+  help-footer: "&c&l━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 staff:
-  pin-required: "&cSECURITY ALERT: Enter your PIN with /pin <your_pin>"
-  pin-set-success: "&aPIN set successfully!"
-  pin-correct: "&aPIN Correct! Access granted."
+  pin-required: "&c&l[SECURITY] &7Access denied: Enter your PIN with /pin <your_pin>"
+  pin-set-success: "&aAdministrative PIN set successfully!"
+  pin-correct: "&aPIN Verified! Access granted."
   pin-incorrect: "&cIncorrect PIN! Attempt {current}/{max}"
-  pin-already-set: "&cYou already have a PIN!"
+  pin-already-set: "&cYou already have a PIN established!"
   pin-usage: "&7Usage: /pin <number> OR /pin set <number>"
+  quarantine-notice: "&c&l[QUARANTINE] &7Your powers are restricted until verification."
+  verification-passed: "&a&l[SECURITY] &fAll checks passed. Powers restored."
 
 modules:
-  geoip-blocked: "&cYour country is not allowed on this server."
-  vpn-blocked: "&cVPN/Proxy detected. Please disable it."
-  rate-limit: "&cSlow down! You're acting too fast."
-  captcha-prompt: "&6Solve this to join: &f{question}"
-  captcha-success: "&aCaptcha solved!"
-  captcha-failed: "&cIncorrect answer. Try again."
+  geoip-blocked: "&cAccess denied: Your country is not allowed on this server."
+  vpn-blocked: "&cVPN/Proxy detected. Please disable it to join."
+  rate-limit: "&cSlow down! You're performing actions too fast."
+  captcha-prompt: "&6Solve this to proceed: &f{question}"
+  captcha-success: "&aCaptcha solved successfully!"
+  captcha-failed: "&cIncorrect answer. Please try again."
   captcha:
     mobile-form-notice: "&e&l[Captcha] &7Please complete the on-screen form."
     pattern-ready: "&a[Staff] &7Please draw your **Visual Pattern**."
 
+chat:
+  anti-flood: "&c[SKGuard] Please do not spam messages!"
+  anti-caps: "&c[SKGuard] Please do not use excessive capitalization."
+  anti-repetitive: "&c[SKGuard] Please do not send repetitive messages."
+  scam-link: "&c&l[SKGuard] &7Harmful link detected and blocked."
+  privacy-masked: "&e[Privacy] Sensitive data has been hidden."
+
+discord:
+  link-success: "&aSuccessfully linked with Discord account: &f{user}"
+  link-code: "&6[Discord] &7Your unique link code is: &f{code}\n&7Type this in the official Discord server."
+  link-failed: "&cFailed to link account. Please try again later."
+  sync-notice: "&b[SKGuard] Roles and permissions synced with Discord."
+
+trade:
+  blocked: "&c[SKGuard] Trading is disabled for unverified accounts."
+  exploit-detected: "&c[SKGuard] Suspicious trade activity detected. Trade cancelled."
+
+elite:
+  firewall-blocked: "&c&l[SKGuard] &7Firewall block: Complete MFA (PIN/Discord) first!"
+  ghost-command: "&c&l[SKGuard] &7Security Violation: Unauthorized command access."
+  snapshot-taken: "&7[SKGuard] Inventory snapshot saved for security."
+  impossible-travel: "&cImpossible travel detected. Account locked for security."
+  self-harm-alert: "&c&l[ALERT] &7Concerning language detected. Staff notified."
+  bot-detection: "&c&l[SKGuard] &7Advanced Bot detection triggered ({type})."
+
+moderation:
+  banned-kick: "&c&l[SKGuard] &7You are BANNED\n&7Reason: &f{reason}\n&7Expires: &f{time}"
+  muted-chat: "&c&l[SKGuard] &7You are MUTED.\n&7Reason: &f{reason}\n&7Expires: &f{time}"
+  warn-receive: "&c&l[SKGuard] &eWARNING: &f{reason}"
+  kick-message: "&c&l[SKGuard] &7You have been kicked.\n&7Reason: &f{reason}"
+  player-not-found: "&cPlayer not found."
+  punishment-success: "&aPunishment successfully applied to {player}."
+  unpunish-success: "&aPunishment revoked for {player}."
+  no-history: "&7No punishment history found."
+  alts-found: "&6[SKGuard] &7Associated accounts for &f{player}&7:"
+  no-alts: "&7No associated accounts found."
+
+anticheat:
+  failed-check: "&7[AC] &f{player} &7failed &e{check} &7(v{value})"
+  kick-message: "&c&l[SKGuard] &7Kicked for &f{check} &7(Ref: AC-01)"
+
+exploit:
+  illegal-item: "&c[SKGuard] Illegal item detected and removed."
+  packet-overflow: "&c[SKGuard] Packet overflow detected. Disconnecting."
+  nbt-stripped: "&7[SKGuard] Malicious NBT data stripped from item."

@@ -1,8 +1,13 @@
-# SKGuard Mensajes en Español
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#             👑 SKGuard | MENSAJES EN ESPAÑOL
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Códigos visuales: & para colores, \n para saltos de línea.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 prefix: "&c[SKGuard] &7"
 
 auth:
-  login-required: "&c&l[SKGuard] &ePor favor, identifícate.\n&7Escribe: &f/login <contraseña>"
+  login-required: "&c&l[SKGuard] &eIdentificación necesaria.\n&7Escribe: &f/login <contraseña>"
   register-required: "&c&l[SKGuard] &eRegistro de cuenta.\n&7Escribe: &f/register <contraseña> <contraseña>"
   already-registered: "&c¡Ya estás registrado! Usa /login."
   not-registered: "&c¡No estás registrado! Usa /register."
@@ -12,41 +17,66 @@ auth:
   too-many-registrations: "&c¡Demasiadas cuentas registradas desde esta IP!"
   success-login: "&a¡Sesión iniciada correctamente!"
   success-register: "&a¡Registrado correctamente!"
-  session-restored: "&aSesión restaurada. ¡Bienvenido de nuevo!"
-  please-auth: "&c¡Por favor identifícate primero!"
+  session-restored: "&a¡Sesión restaurada! Bienvenido de nuevo."
+  please-auth: "&c¡Por favor, identifícate primero!"
   usage-login: "&7Uso: /login <contraseña>"
   usage-register: "&7Uso: /register <contraseña> <confirmar_contraseña>"
+  identity-mismatch: "&c[SKGuard] Conflicto de Identidad.\n&7Por favor, usa tu cuenta original."
 
 general:
-  no-permission: "&cNo tienes permiso."
-  reloaded: "&aConfiguración y módulos recargados."
-  unknown-command: "&cComando desconocido."
+  no-permission: "&cNo tienes permiso para realizar esta acción."
+  reloaded: "&aConfiguración y módulos de seguridad recargados."
+  unknown-command: "&cComando desconocido. Usa /skguard help para más info."
+  maintenance-mode: "&cEl servidor está actualmente en mantenimiento."
+  panic-mode-active: "&4&l[PANIC] &cEl servidor se encuentra en bloqueo de emergencia."
+  help-header: "&c&l━━━━━━━ &fAyuda de SKGuard &c&l━━━━━━━"
+  help-footer: "&c&l━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 staff:
-  pin-required: "&cALERTA DE SEGURIDAD: Introduce tu PIN con /pin <tu_pin>"
-  pin-set-success: "&a¡PIN establecido correctamente!"
-  pin-correct: "&a¡PIN correcto! Acceso concedido."
+  pin-required: "&c&l[SEGURIDAD] &7Acceso denegado: Introduce tu PIN con /pin <tu_pin>"
+  pin-set-success: "&a¡PIN administrativo establecido correctamente!"
+  pin-correct: "&a¡PIN verificado! Acceso concedido."
   pin-incorrect: "&c¡PIN incorrecto! Intento {current}/{max}"
   pin-already-set: "&c¡Ya tienes un PIN establecido!"
   pin-usage: "&7Uso: /pin <número> O /pin set <número>"
+  quarantine-notice: "&c&l[CUARENTENA] &7Tus poderes están restringidos hasta que te verifiques."
+  verification-passed: "&a&l[SEGURIDAD] &fVerificación completada. Poderes restaurados."
 
 modules:
-  geoip-blocked: "&cTu país no está permitido en este servidor."
-  vpn-blocked: "&cSe ha detectado una VPN/Proxy. Por favor, desactívalo."
-  rate-limit: "&c¡Más despacio! Estás haciendo acciones demasiado rápido."
-  captcha-prompt: "&6Resuelve esto para entrar: &f{question}"
-  captcha-success: "&a¡Captcha resuelto!"
+  geoip-blocked: "&cAcceso denegado: Tu país no está permitido en este servidor."
+  vpn-blocked: "&cSe ha detectado una VPN/Proxy. Desactívala para entrar."
+  rate-limit: "&c¡Más despacio! Estás realizando acciones demasiado rápido."
+  captcha-prompt: "&6Resuelve esto para continuar: &f{question}"
+  captcha-success: "&a¡Captcha resuelto correctamente!"
   captcha-failed: "&cRespuesta incorrecta. Inténtalo de nuevo."
   captcha:
     mobile-form-notice: "&e&l[Captcha] &7Por favor, completa el formulario en pantalla."
     pattern-ready: "&a[Staff] &7Por favor, dibuja tu **Patrón Visual**."
 
+chat:
+  anti-flood: "&c[SKGuard] ¡Por favor, no hagas spam!"
+  anti-caps: "&c[SKGuard] Por favor, no uses exceso de mayúsculas."
+  anti-repetitive: "&c[SKGuard] Por favor, no envíes mensajes repetitivos."
+  scam-link: "&c&l[SKGuard] &7Enlace peligroso detectado y bloqueado."
+  privacy-masked: "&e[Privacidad] Se ha ocultado información sensible."
+
+discord:
+  link-success: "&aVinculado correctamente con la cuenta de Discord: &f{user}"
+  link-code: "&6[Discord] &7Tu código de vinculación es: &f{code}\n&7Escríbelo en el servidor oficial de Discord."
+  link-failed: "&cError al vincular la cuenta. Inténtalo de nuevo más tarde."
+  sync-notice: "&b[SKGuard] Rangos y permisos sincronizados con Discord."
+
+trade:
+  blocked: "&c[SKGuard] Los intercambios están desactivados para cuentas no verificadas."
+  exploit-detected: "&c[SKGuard] Actividad sospechosa detectada. Intercambio cancelado."
+
 elite:
-  firewall-blocked: "&c&l[SKGuard] &7¡Firewall bloqueado! Completa el MFA (PIN/Discord) primero."
-  ghost-command: "&c&l[SKGuard] &7Violación de seguridad: Acceso a comando no autorizado."
-  snapshot-taken: "&7[SKGuard] Instantánea de inventario guardada por seguridad."
-  impossible-travel: "&cSe ha detectado un viaje imposible. Cuenta bloqueada por seguridad."
-  self-harm-alert: "&c&l[ALERTA] &7Se ha detectado lenguaje preocupante. Un moderador ha sido avisado."
+  firewall-blocked: "&c&l[SKGuard] &7Bloqueo de Firewall: ¡Completa el MFA (PIN/Discord) primero!"
+  ghost-command: "&c&l[SKGuard] &7Violación de Seguridad: Acceso a comando no autorizado."
+  snapshot-taken: "&7[SKGuard] Inventario guardado por seguridad."
+  impossible-travel: "&cViaje imposible detectado. Cuenta bloqueada por seguridad."
+  self-harm-alert: "&c&l[ALERTA] &7Lenguaje preocupante detectado. El staff ha sido avisado."
+  bot-detection: "&c&l[SKGuard] &7Detección avanzada de Bots activada ({type})."
 
 moderation:
   banned-kick: "&c&l[SKGuard] &7Has sido BANEADO\n&7Razón: &f{reason}\n&7Expira: &f{time}"
@@ -60,3 +90,11 @@ moderation:
   alts-found: "&6[SKGuard] &7Cuentas asociadas a &f{player}&7:"
   no-alts: "&7No se encontraron cuentas asociadas."
 
+anticheat:
+  failed-check: "&7[AC] &f{player} &7falló &e{check} &7(v{value})"
+  kick-message: "&c&l[SKGuard] &7Expulsado por &f{check} &7(Ref: AC-01)"
+
+exploit:
+  illegal-item: "&c[SKGuard] Objeto ilegal detectado y eliminado."
+  packet-overflow: "&c[SKGuard] Desbordamiento de paquetes detectado. Desconectando."
+  nbt-stripped: "&7[SKGuard] Datos NBT maliciosos eliminados del objeto."
